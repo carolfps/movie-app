@@ -1,6 +1,7 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Frank+Ruhl+Libre&family=IBM+Plex+Serif&family=Muli:wght@300&display=swap');
 *{
     box-sizing: border-box;
+    font-family: "Muli", sans-serif;
 }
 .container{
     max-width: 1140px;
