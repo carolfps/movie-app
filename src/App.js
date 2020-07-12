@@ -11,7 +11,22 @@ const App = () => {
     useEffect(() => {
         async function fetchApi(){
             const response = await axios('https://ghibliapi.herokuapp.com/films');
-            setMovieList(response.data);
+            let responseData = response.data;
+
+            for( let film of responseData){
+              if(film.people.length > 0){
+                const tokens = film.people[0].split("/");
+                if(tokens[tokens.length - 1] === ""){
+                  film.people = [];
+                } else{
+                  for(let index in film.people){                    
+                    const responsePerson = await axios(film.people[index]);
+                    film.people[index] = responsePerson.data;
+                  }
+                }
+              }
+            }
+            setMovieList(responseData);
         };
         fetchApi();
     }, []);
