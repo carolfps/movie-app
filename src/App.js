@@ -38,7 +38,7 @@ const App = () => {
           <h1>Filmes Studio Ghibli</h1>
           {movieList.length > 0 && <MovieGrid movieList={movieList} />}
         </Route>
-        <Route exact path="/detalhe/:id" >
+        <Route exact path="/:title" >
           {movieList.length > 0 && <MovieDetail movieList={movieList} />}
         </Route>
       </React.Fragment>
