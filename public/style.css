@@ -4,6 +4,16 @@
     font-family: "Open Sans Condensed", sans-serif;
     color: #3F3F3F;
 }
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    display: block;
+    flex: 1 0 auto;
+}
 .container{
     max-width: 1140px;
     margin-right: auto;
