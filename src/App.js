@@ -10,23 +10,46 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
     useEffect(() => {
         async function fetchApi(){
-            const response = await axios('https://ghibliapi.herokuapp.com/films');
-            let responseData = response.data;
+            async function getApiData() {
+              const response = await axios('https://ghibliapi.herokuapp.com/films');
+              let responseData = response.data;
 
-            for( let film of responseData){
-              if(film.people.length > 0){
-                const tokens = film.people[0].split("/");
-                if(tokens[tokens.length - 1] === ""){
-                  film.people = [];
-                } else{
-                  for(let index in film.people){                    
-                    const responsePerson = await axios(film.people[index]);
-                    film.people[index] = responsePerson.data;
+              for (let film of responseData) {
+                if (film.people.length > 0) {
+                  const tokens = film.people[0].split("/");
+                  
+                  if (tokens[tokens.length - 1] === "") {
+                    film.people = [];
+                  } else {
+                    for (let index in film.people) {
+                      const responsePerson = await axios(film.people[index]);
+                      film.people[index] = responsePerson.data;
+                    }
                   }
                 }
               }
+              return responseData;
             }
-            setMovieList(responseData);
+
+            let previousValues = localStorage.getItem("@movie-app/movies");
+
+            if (previousValues) {              
+              setMovieList(JSON.parse(previousValues));
+
+              let responseData = await getApiData();
+              let responseDataStr = JSON.stringify(responseData);
+
+              if (previousValues !== responseDataStr) {
+                localStorage.setItem("@movie-app/movies", responseDataStr);
+                setMovieList(responseData);
+              }
+
+            } else {
+              let responseData = await getApiData();
+              setMovieList(responseData);
+
+              localStorage.setItem("@movie-app/movies", JSON.stringify(responseData));
+            }
         };
         fetchApi();
     }, []);
