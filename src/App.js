@@ -15,9 +15,10 @@ const App = () => {
     }, []);
 
   return (
-    <div>
+    <>
+        <h1>Filmes Studio Ghibli</h1>
         {movieList.length > 0 && <MovieGrid movieList={movieList} />}
-    </div>
+    </>
   );
 }
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import MovieCard from './MovieCard';
+import './MovieGrid.css'
 
 const MovieGrid = (props) => {
     return (
-        <ul>
+        <div className="grid">
             {props.movieList.map( movie => <MovieCard key={movie.id} movie={movie} />)}            
-        </ul>
+        </div>
     );
 }
 
