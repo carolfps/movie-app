@@ -61,7 +61,7 @@ const App = () => {
 
   return (
       (errorMsg !== '') ?
-      (<h1>{errorMsg}</h1>) :
+      (<h1 className="error-text">{errorMsg}</h1>) :
       (
         <BrowserRouter>
           <React.Fragment>
@@ -70,7 +70,7 @@ const App = () => {
                 {movieList.length > 0 && <h1>Filmes Studio Ghibli</h1>}
                 {movieList.length > 0 && <MovieGrid movieList={movieList} />}
               </main>
-              <Footer />
+              {movieList.length > 0 && <Footer />}
             </Route>
             <Route exact path="/:title" >
               <main>

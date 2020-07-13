@@ -11,12 +11,3 @@ body {
     flex-direction: column;
     background-color: #f3f1ef;
 }
-main {
-    display: block;
-    flex: 1 0 auto;
-}
-.container{
-    max-width: 1140px;
-    margin-right: auto;
-    margin-left: auto;
-}

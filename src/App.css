@@ -1,5 +1,23 @@
+main {
+    display: block;
+    flex: 1 0 auto;
+}
+.container{
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 h1{
     text-align: center;
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 3rem;
+}
+.error-text{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
