@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import MovieGrid from './MovieGrid';
 import MovieDetail from './MovieDetail';
+import Footer from './Footer';
 
 const App = () => {
 
@@ -63,15 +64,20 @@ const App = () => {
       (<h1>{errorMsg}</h1>) :
       (
         <BrowserRouter>
-        <React.Fragment>
-          <Route exact path="/">
-            {movieList.length > 0 && <h1>Filmes Studio Ghibli</h1>}
-            {movieList.length > 0 && <MovieGrid movieList={movieList} />}
-          </Route>
-          <Route exact path="/:title" >
-            {movieList.length > 0 && <MovieDetail movieList={movieList} />}
-          </Route>
-        </React.Fragment>
+          <React.Fragment>
+            <Route exact path="/">
+              <main className="container">
+                {movieList.length > 0 && <h1>Filmes Studio Ghibli</h1>}
+                {movieList.length > 0 && <MovieGrid movieList={movieList} />}
+              </main>
+              <Footer />
+            </Route>
+            <Route exact path="/:title" >
+              <main>
+                {movieList.length > 0 && <MovieDetail movieList={movieList} />}
+              </main>
+            </Route>
+          </React.Fragment>
       </BrowserRouter>
       ));
 }
