@@ -53,3 +53,14 @@
     font-weight: bold;
     text-align: center;
 }
+
+@media only screen and (max-width: 1140px) {
+    .card{
+        width: 45vw; 
+    }
+}
+@media only screen and (max-width: 992px) {
+    .card{
+        width: 100%; 
+    }
+}
