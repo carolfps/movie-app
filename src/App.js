@@ -5,11 +5,13 @@ import './App.css';
 import MovieGrid from './MovieGrid';
 import MovieDetail from './MovieDetail';
 import Footer from './Footer';
+import Loading from './Loading';
 
 const App = () => {
 
   const [movieList, setMovieList] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
+  const [loaded, setLoaded] = useState(false);
     useEffect(() => {
         async function fetchApi(){
             async function getApiData() {
@@ -37,6 +39,7 @@ const App = () => {
   
               if (previousValues) {              
                 setMovieList(JSON.parse(previousValues));
+                setLoaded(true);
   
                 let responseData = await getApiData();
                 let responseDataStr = JSON.stringify(responseData);
@@ -49,9 +52,10 @@ const App = () => {
               } else {
                 let responseData = await getApiData();
                 setMovieList(responseData);
+                setLoaded(true);
   
                 localStorage.setItem("@movie-app/movies", JSON.stringify(responseData));
-              }
+              }              
             }catch (error){
               setTimeout(() => setErrorMsg('Erro na busca de dados 😭'), 2000);
         };
@@ -69,12 +73,14 @@ const App = () => {
               <main className="container">
                 {movieList.length > 0 && <h1>Filmes Studio Ghibli</h1>}
                 {movieList.length > 0 && <MovieGrid movieList={movieList} />}
+                {!loaded && <Loading />}
               </main>
               {movieList.length > 0 && <Footer />}
             </Route>
             <Route exact path="/:title" >
               <main>
                 {movieList.length > 0 && <MovieDetail movieList={movieList} />}
+                {!loaded && <Loading />}
               </main>
             </Route>
           </React.Fragment>
