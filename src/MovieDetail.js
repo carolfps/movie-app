@@ -12,10 +12,15 @@ const MovieDetail = (props) => {
             <div className="detail-card-title">{movie.title}</div>
             <p className="detail-card-date">{movie.release_date}</p>
             <p className="detail-card-text"> <span className="card-label"> Descrição: </span> {movie.description}</p>
-            <p className="detail-card-text"> <span className="card-label"> Personagens: </span> {movie.people.length>0 ? nameStr : <span className="no-info"> Sem informação </span>}</p>
+            {movie.people.length>0 ? <p className="detail-card-text"> <span className="card-label"> Personagens&#58; </span> {nameStr} </p> : ''}
             <p className="detail-card-text"> <span className="card-label"> Diretor: </span> {movie.director} </p>
             <p className="detail-card-text"> <span className="card-label"> Produtor: </span> {movie.producer} </p>
-            <p className="detail-card-text"> <span className="card-label"> Pontuação Rotten Tomatoes: </span> {movie.rt_score}&#37; </p>
+            <div className="detail-score">
+                <p className="detail-card-text"><span className="card-label"> Pontuação Rotten Tomatoes:</span></p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Rotten_Tomatoes_positive_audience.svg" alt="pipoca" className="rt-popcorn" /> 
+                <p className="detail-card-text">{movie.rt_score}&#37; </p>
+            </div>
+            
         </div>
     );
 }

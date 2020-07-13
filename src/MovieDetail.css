@@ -9,4 +9,29 @@
     border-radius: 10px;
     padding: 15px;
     width: 70%;
+    background-color: #FFF;
+}
+.detail-card-title{
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.detail-card-date{
+    text-align: left;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+.detail-score{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-end;
+    margin-bottom: 1em;
+}
+.detail-score>p{
+    margin: 0;
+}
+.rt-popcorn{
+    height: 20px;
+    margin: 0 5px;
 }
